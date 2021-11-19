@@ -9,6 +9,7 @@ inputs:
     default: false
 outputs:
   time:
+    description: "formatted date"
 runs:
   using: "node12"
   main: "dist/index.js"
