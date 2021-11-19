@@ -1,0 +1,12 @@
+name: "current-date-time"
+description: "current-date-time"
+inputs:
+  format:
+  timezone-offset:
+  debug:
+    default: false
+outputs:
+  time:
+runs:
+  using: "node12"
+  main: "dist/index.js"
