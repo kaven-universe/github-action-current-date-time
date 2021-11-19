@@ -2,7 +2,9 @@ name: "current-date-time"
 description: "current-date-time"
 inputs:
   format:
+    default: ""
   timezone-offset:
+    default: 0
   debug:
     default: false
 outputs:
