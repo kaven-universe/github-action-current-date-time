@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  hello_world_job:
+  get_time_job:
     runs-on: ubuntu-latest
     name: Test
     steps:
