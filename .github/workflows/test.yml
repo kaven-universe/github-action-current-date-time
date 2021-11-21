@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Get
         id: current_date_time
-        uses: Kaven-Universe/github-action-current-date-time@v1.0.4
+        uses: Kaven-Universe/github-action-current-date-time@v1.0.5
         with:
           format: "YYYY_MM_DD HH_mm_ss_SSS"
           timezone-offset: -480
