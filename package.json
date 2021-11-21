@@ -20,7 +20,7 @@
   "dependencies": {
     "@actions/core": "^1.6.0",
     "@actions/github": "^5.0.0",
-    "kaven-basic": "^3.0.1"
+    "kaven-basic": "^3.0.2"
   },
   "devDependencies": {
     "@vercel/ncc": "^0.32.0",

@@ -10,6 +10,26 @@ inputs:
 outputs:
   time:
     description: "formatted date"
+  year:
+    description: ""
+  month:
+    description: ""
+  day:
+    description: ""
+  hours:
+    description: ""
+  minutes:
+    description: ""
+  seconds:
+    description: ""
+  milliseconds:
+    description: ""
+  day_of_week:
+    description: ""
+  week_of_year:
+    description: ""
+  milliseconds_since_epoch:
+    description: "A number representing the milliseconds elapsed since 1 January 1970 00:00:00 UTC."
 runs:
   using: "node12"
   main: "dist/index.js"

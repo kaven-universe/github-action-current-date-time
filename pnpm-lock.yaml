@@ -6,12 +6,12 @@ specifiers:
   '@vercel/ncc': ^0.32.0
   '@wenkai.wu/eslint-config': ^1.0.5
   eslint: ^8.2.0
-  kaven-basic: ^3.0.1
+  kaven-basic: ^3.0.2
 
 dependencies:
   '@actions/core': 1.6.0
   '@actions/github': 5.0.0
-  kaven-basic: 3.0.1
+  kaven-basic: 3.0.2
 
 devDependencies:
   '@vercel/ncc': 0.32.0
@@ -545,8 +545,8 @@ packages:
     resolution: {integrity: sha1-nbe1lJatPzz+8wp1FC0tkwrXJlE=}
     dev: true
 
-  /kaven-basic/3.0.1:
-    resolution: {integrity: sha512-wVdN/38KXW6GECDaxJSyNdKfQqqnBzngVwlhk6MqMU/Rl23reKfZj11nw5wrTslGrcnltqhLlnU/5VI8OK1McQ==}
+  /kaven-basic/3.0.2:
+    resolution: {integrity: sha512-KXBxnxOhNOJFrT7I5e3+muAkaEsO4CHxRSE+c2L4HqL64ebe178C9Msx1yss0NMc4Igc1VQuhpWI3G8ikaXPjA==}
     dev: false
 
   /levn/0.4.1:

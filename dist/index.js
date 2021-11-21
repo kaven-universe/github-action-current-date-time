@@ -4037,13 +4037,13 @@ exports.isPlainObject = isPlainObject;
 
 /***/ }),
 
-/***/ 9664:
+/***/ 1733:
 /***/ (function(__unused_webpack_module, exports) {
 
 (function (global, factory) {
      true ? factory(exports) :
     0;
-}(this, (function (exports) { 'use strict';
+})(this, (function (exports) { 'use strict';
 
     /********************************************************************
      * @author:      Kaven
@@ -4169,9 +4169,9 @@ exports.isPlainObject = isPlainObject;
      * @website:     http://blog.kaven.xyz
      * @file:        [Kaven-Basic] /src/libs/KavenBasic.Core.ts
      * @create:      2020-06-02 15:33:55.173
-     * @modify:      2021-08-07 06:04:28.807
-     * @version:     2.0.14
-     * @times:       23
+     * @modify:      2021-11-20 14:17:10.793
+     * @version:     3.0.2
+     * @times:       24
      * @lines:       489
      * @copyright:   Copyright © 2020-2021 Kaven. All Rights Reserved.
      * @description: [description]
@@ -4239,6 +4239,12 @@ exports.isPlainObject = isPlainObject;
     function ConvertTo(val) {
         return val;
     }
+    function IsString(val) {
+        if (typeof val === "string" || val instanceof String) {
+            return true;
+        }
+        return false;
+    }
     /**
      *
      * @param val
@@ -4276,12 +4282,6 @@ exports.isPlainObject = isPlainObject;
             }
         }
         return result;
-    }
-    function IsString(val) {
-        if (typeof val === "string" || val instanceof String) {
-            return true;
-        }
-        return false;
     }
     /**
      *
@@ -4326,7 +4326,7 @@ exports.isPlainObject = isPlainObject;
                     case 0: return [4 /*yield*/, Sleep(timeout)];
                     case 1:
                         _a.sent();
-                        return [2 /*return*/, Promise.reject(new Error("timeout: " + timeout))];
+                        return [2 /*return*/, Promise.reject(new Error("timeout: ".concat(timeout)))];
                 }
             });
         });
@@ -4433,7 +4433,7 @@ exports.isPlainObject = isPlainObject;
         return result;
     }
     function SplitByN(str, n, fromLeft) {
-        var reg = fromLeft !== true ? ".{1," + n + "}(?=(.{" + n + "})+(?!.))|.{1," + n + "}$" : ".{1," + n + "}";
+        var reg = fromLeft !== true ? ".{1,".concat(n, "}(?=(.{").concat(n, "})+(?!.))|.{1,").concat(n, "}$") : ".{1,".concat(n, "}");
         return str.match(new RegExp(reg, "g"));
     }
     function Number2Uint8Array(number) {
@@ -4548,21 +4548,6 @@ exports.isPlainObject = isPlainObject;
         }
     }
     /**
-     *
-     *
-     * @export
-     * @param {string} str
-     * @param {string} strStart
-     * @param {string} strEnd
-     * @returns
-     * @version 2018-09-01
-     * @since 1.0.6
-     */
-    function GetStringBetween(str, strStart, strEnd, max) {
-        if (max === void 0) { max = -1; }
-        return GetStringPositionBetween(str, strStart, strEnd, max).map(function (p) { return str.substring(p.Start, p.End); });
-    }
-    /**
      * @param {string} str
      * @param {string} strStart
      * @param {string} strEnd
@@ -4609,6 +4594,21 @@ exports.isPlainObject = isPlainObject;
     }
     /**
      *
+     *
+     * @export
+     * @param {string} str
+     * @param {string} strStart
+     * @param {string} strEnd
+     * @returns
+     * @version 2018-09-01
+     * @since 1.0.6
+     */
+    function GetStringBetween(str, strStart, strEnd, max) {
+        if (max === void 0) { max = -1; }
+        return GetStringPositionBetween(str, strStart, strEnd, max).map(function (p) { return str.substring(p.Start, p.End); });
+    }
+    /**
+     *
      * @param replaceMethod
      * @param str
      * @param strStart
@@ -4643,9 +4643,9 @@ exports.isPlainObject = isPlainObject;
      * @website:     http://blog.kaven.xyz
      * @file:        [Kaven-Basic] /src/libs/Enums.ts
      * @create:      2018-08-30 16:07:24.162
-     * @modify:      2021-08-06 13:03:56.961
-     * @version:     2.0.14
-     * @times:       8
+     * @modify:      2021-11-20 13:17:54.927
+     * @version:     3.0.2
+     * @times:       9
      * @lines:       283
      * @copyright:   Copyright © 2018-2021 Kaven. All Rights Reserved.
      * @description: [description]
@@ -4783,7 +4783,7 @@ exports.isPlainObject = isPlainObject;
          */
         DateTimeFormat["TIME_MS"] = "HH:mm:ss.SSS";
         /**
-         * 1993-W50
+         * 1993-W03
          * @version 2018-08-18 15:07:49.379
          * @since 1.1.5
          */
@@ -5140,9 +5140,9 @@ exports.isPlainObject = isPlainObject;
      * @website:     http://blog.kaven.xyz
      * @file:        [Kaven-Basic] /src/libs/KavenBasic.Extension.ts
      * @create:      2020-01-19 13:07:41.405
-     * @modify:      2021-08-07 16:06:26.842
-     * @version:     2.0.14
-     * @times:       26
+     * @modify:      2021-11-20 14:26:01.178
+     * @version:     3.0.2
+     * @times:       27
      * @lines:       563
      * @copyright:   Copyright © 2020-2021 Kaven. All Rights Reserved.
      * @description: [description]
@@ -5165,10 +5165,14 @@ exports.isPlainObject = isPlainObject;
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
      * SOFTWARE.
      ********************************************************************/
-    var __spreadArray$2 = (undefined && undefined.__spreadArray) || function (to, from) {
-        for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
-            to[j] = from[i];
-        return to;
+    var __spreadArray$2 = (undefined && undefined.__spreadArray) || function (to, from, pack) {
+        if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+            if (ar || !(i in from)) {
+                if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+                ar[i] = from[i];
+            }
+        }
+        return to.concat(ar || Array.prototype.slice.call(from));
     };
     // #region String
     function ReplaceAll(str, old, rep) {
@@ -5236,6 +5240,25 @@ exports.isPlainObject = isPlainObject;
         }
         return Strings.Empty;
     }
+    function ToArray(str) {
+        if (IsNotEmpty(str)) {
+            // https://stackoverflow.com/questions/6484670/how-do-i-split-a-string-into-an-array-of-characters/38901550#38901550
+            // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split#Syntax
+            // return str.split(Strings.Empty); // 2019-04-03
+            return Array.from(str);
+        }
+        return [];
+    }
+    function Distinct(val) {
+        if (Array.isArray(val)) {
+            // https://stackoverflow.com/questions/1960473/get-all-unique-values-in-a-javascript-array-remove-duplicates
+            return Array.from(new Set(val));
+        }
+        if (IsNotEmpty(val)) {
+            return Distinct(ToArray(val)).join(Strings.Empty);
+        }
+        return val;
+    }
     function OnlyContains(str) {
         var characters = [];
         for (var _i = 1; _i < arguments.length; _i++) {
@@ -5284,25 +5307,6 @@ exports.isPlainObject = isPlainObject;
             }
         }
         return count;
-    }
-    function ToArray(str) {
-        if (IsNotEmpty(str)) {
-            // https://stackoverflow.com/questions/6484670/how-do-i-split-a-string-into-an-array-of-characters/38901550#38901550
-            // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split#Syntax
-            // return str.split(Strings.Empty); // 2019-04-03
-            return Array.from(str);
-        }
-        return [];
-    }
-    function Distinct(val) {
-        if (Array.isArray(val)) {
-            // https://stackoverflow.com/questions/1960473/get-all-unique-values-in-a-javascript-array-remove-duplicates
-            return Array.from(new Set(val));
-        }
-        if (IsNotEmpty(val)) {
-            return Distinct(ToArray(val)).join(Strings.Empty);
-        }
-        return val;
     }
     function GetSubstring(str, pos) {
         return str.substring(pos.Start, pos.End);
@@ -5438,10 +5442,10 @@ exports.isPlainObject = isPlainObject;
             return true;
         }
         if (!array) {
-            throw new Error("first: " + array);
+            throw new Error("first: ".concat(array));
         }
         if (!second) {
-            throw new Error("second: " + second);
+            throw new Error("second: ".concat(second));
         }
         if (array.length !== second.length) {
             return false;
@@ -5484,7 +5488,7 @@ exports.isPlainObject = isPlainObject;
             case exports.TimeUnit.years:
                 return num * exports.TimeFactor[currentUnit];
             default:
-                console.warn("Unexpected time unit: " + currentUnit + ".");
+                console.warn("Unexpected time unit: ".concat(currentUnit, "."));
                 return num;
         }
     }
@@ -5613,7 +5617,7 @@ exports.isPlainObject = isPlainObject;
      * @version 2020-01-11
      */
     function CloneArray(array) {
-        return __spreadArray$2([], array);
+        return __spreadArray$2([], array, true);
     }
 
     /********************************************************************
@@ -5622,10 +5626,10 @@ exports.isPlainObject = isPlainObject;
      * @website:     http://blog.kaven.xyz
      * @file:        [Kaven-Basic] /src/libs/DateTime.ts
      * @create:      2021-08-05 15:09:01.492
-     * @modify:      2021-08-07 14:37:50.375
-     * @version:     2.0.14
-     * @times:       20
-     * @lines:       211
+     * @modify:      2021-11-20 14:23:21.210
+     * @version:     3.0.2
+     * @times:       33
+     * @lines:       231
      * @copyright:   Copyright © 2021 Kaven. All Rights Reserved.
      * @description: [description]
      * @license:
@@ -5728,6 +5732,20 @@ exports.isPlainObject = isPlainObject;
             if (length === void 0) { length = 2; }
             return number.toString().padStart(length, "0");
         };
+        DateTime.prototype.format = function (str) {
+            var result = str;
+            result = ReplaceAll(result, "YYYY", this.formatNumber(this.Year, 4));
+            result = ReplaceAll(result, "MM", this.formatNumber(this.Month));
+            result = ReplaceAll(result, "DD", this.formatNumber(this.Day));
+            result = ReplaceAll(result, "HH", this.formatNumber(this.Hours));
+            result = ReplaceAll(result, "mm", this.formatNumber(this.Minutes));
+            result = ReplaceAll(result, "ss", this.formatNumber(this.Seconds));
+            result = ReplaceAll(result, "SSS", this.formatNumber(this.Milliseconds, 3));
+            result = ReplaceAll(result, "dd", DayOfWeekTdd[this.DayOfWeek]);
+            result = ReplaceAll(result, "ww", this.formatNumber(GetWeekOfYear(this.date, false)));
+            result = ReplaceAll(result, "WW", this.formatNumber(GetWeekOfYear(this.date, true)));
+            return result;
+        };
         DateTime.prototype.Add = function (value, unit) {
             var _this = this;
             if (unit === void 0) { unit = exports.TimeUnit.milliseconds; }
@@ -5756,7 +5774,7 @@ exports.isPlainObject = isPlainObject;
                     this.millisecondsSinceEpoch = this.date.setFullYear(this.Year + value);
                     return this;
                 default:
-                    throw Error("Not support: " + unit);
+                    throw Error("Not support: ".concat(unit));
             }
         };
         DateTime.prototype.Subtract = function (value, unit) {
@@ -5786,7 +5804,7 @@ exports.isPlainObject = isPlainObject;
                     diff = diffMs / MsPerWeek;
                     break;
                 default:
-                    throw Error("Not support: " + unit);
+                    throw Error("Not support: ".concat(unit));
             }
             return diff;
         };
@@ -5799,24 +5817,24 @@ exports.isPlainObject = isPlainObject;
             if (timezoneOffset !== 0) {
                 var dt = this.Clone();
                 dt.Subtract(timezoneOffset, exports.TimeUnit.minutes);
-                return dt.ToString(format);
+                return dt.ToString(format, 0);
             }
             var str = format.toString();
-            var items = GetStringBetween(str, "[", "]");
-            for (var _i = 0, items_1 = items; _i < items_1.length; _i++) {
-                var item = items_1[_i];
-                str = ReplaceAll(str, "[" + item + "]", item);
+            var list = GetStringPositionBetween(str, "[", "]");
+            if (list.length > 0) {
+                var result = "";
+                var i = 0;
+                for (var _i = 0, list_1 = list; _i < list_1.length; _i++) {
+                    var sp = list_1[_i];
+                    result += this.format(str.substring(i, sp.Start - 1));
+                    result += str.substring(sp.Start, sp.End);
+                    i = sp.End + 1;
+                }
+                str = result + this.format(str.substr(i));
             }
-            str = ReplaceAll(str, "YYYY", this.formatNumber(this.Year, 4));
-            str = ReplaceAll(str, "MM", this.formatNumber(this.Month));
-            str = ReplaceAll(str, "DD", this.formatNumber(this.Day));
-            str = ReplaceAll(str, "HH", this.formatNumber(this.Hours));
-            str = ReplaceAll(str, "mm", this.formatNumber(this.Minutes));
-            str = ReplaceAll(str, "ss", this.formatNumber(this.Seconds));
-            str = ReplaceAll(str, "SSS", this.formatNumber(this.Milliseconds, 3));
-            str = ReplaceAll(str, "dd", DayOfWeekTdd[this.DayOfWeek]);
-            str = ReplaceAll(str, "ww", this.formatNumber(GetWeekOfYear(this.date, false)));
-            str = ReplaceAll(str, "WW", this.formatNumber(GetWeekOfYear(this.date, true)));
+            else {
+                str = this.format(str);
+            }
             return str;
         };
         DateTime.prototype.ToLocalString = function (format) {
@@ -5840,10 +5858,10 @@ exports.isPlainObject = isPlainObject;
      * @website:     http://blog.kaven.xyz
      * @file:        [Kaven-Basic] /src/libs/KavenBasic.Date.ts
      * @create:      2021-08-07 06:10:11.256
-     * @modify:      2021-08-07 06:10:11.256
-     * @version:     2.0.14
-     * @times:       1
-     * @lines:       44
+     * @modify:      2021-11-20 13:48:05.885
+     * @version:     3.0.2
+     * @times:       3
+     * @lines:       78
      * @copyright:   Copyright © 2021 Kaven. All Rights Reserved.
      * @description: [description]
      * @license:
@@ -5865,14 +5883,6 @@ exports.isPlainObject = isPlainObject;
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
      * SOFTWARE.
      ********************************************************************/
-    /**
-     *
-     * @param dt default `new Date()`
-     * @param format default `DateTimeFormat.FullDataTime`
-     * @param timezoneOffset default `undefined` means use local time zone offset
-     * @since 1.0.5
-     * @version 2021-08-06
-     */
     function FormatDate(dt, format, timezoneOffset) {
         if (!dt) {
             dt = new Date();
@@ -5908,10 +5918,10 @@ exports.isPlainObject = isPlainObject;
      * @website:     http://blog.kaven.xyz
      * @file:        [Kaven-Basic] /src/libs/Extensions.ts
      * @create:      2019-04-25 12:45:36.310
-     * @modify:      2021-08-07 06:11:57.095
-     * @version:     2.0.14
-     * @times:       47
-     * @lines:       880
+     * @modify:      2021-11-20 13:48:05.886
+     * @version:     3.0.2
+     * @times:       48
+     * @lines:       881
      * @copyright:   Copyright © 2019-2021 Kaven. All Rights Reserved.
      * @description: [description]
      * @license:
@@ -5933,10 +5943,14 @@ exports.isPlainObject = isPlainObject;
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
      * SOFTWARE.
      ********************************************************************/
-    var __spreadArray$1 = (undefined && undefined.__spreadArray) || function (to, from) {
-        for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
-            to[j] = from[i];
-        return to;
+    var __spreadArray$1 = (undefined && undefined.__spreadArray) || function (to, from, pack) {
+        if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+            if (ar || !(i in from)) {
+                if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+                ar[i] = from[i];
+            }
+        }
+        return to.concat(ar || Array.prototype.slice.call(from));
     };
     // #endregion
     var isInitialized = false;
@@ -6062,21 +6076,21 @@ exports.isPlainObject = isPlainObject;
             for (var _i = 0; _i < arguments.length; _i++) {
                 characters[_i] = arguments[_i];
             }
-            return OnlyContains.apply(void 0, __spreadArray$1([this], characters));
+            return OnlyContains.apply(void 0, __spreadArray$1([this], characters, false));
         };
         String.prototype.ContainsSubstringOnlyOnce = function () {
             var substrings = [];
             for (var _i = 0; _i < arguments.length; _i++) {
                 substrings[_i] = arguments[_i];
             }
-            return ContainsSubstringOnlyOnce.apply(void 0, __spreadArray$1([this], substrings));
+            return ContainsSubstringOnlyOnce.apply(void 0, __spreadArray$1([this], substrings, false));
         };
         String.prototype.CharactersCount = function () {
             var characters = [];
             for (var _i = 0; _i < arguments.length; _i++) {
                 characters[_i] = arguments[_i];
             }
-            return CharactersCount.apply(void 0, __spreadArray$1([this], characters));
+            return CharactersCount.apply(void 0, __spreadArray$1([this], characters, false));
         };
         String.prototype.ToArray = function () {
             return ToArray(this);
@@ -6110,7 +6124,7 @@ exports.isPlainObject = isPlainObject;
             for (var _i = 0; _i < arguments.length; _i++) {
                 args[_i] = arguments[_i];
             }
-            return FormatString.apply(void 0, __spreadArray$1([this], args));
+            return FormatString.apply(void 0, __spreadArray$1([this], args, false));
         };
         // #endregion
         // #region Array
@@ -6253,7 +6267,7 @@ exports.isPlainObject = isPlainObject;
             }
             if (typeof initialValue === "number") {
                 if (initialValue > Number.MAX_SAFE_INTEGER) {
-                    throw new Error("Initial value is too big: " + initialValue + " > " + Number.MAX_SAFE_INTEGER);
+                    throw new Error("Initial value is too big: ".concat(initialValue, " > ").concat(Number.MAX_SAFE_INTEGER));
                 }
                 initialValue = initialValue.toString(2);
             }
@@ -6270,7 +6284,7 @@ exports.isPlainObject = isPlainObject;
                         radix = 16;
                         break;
                     default:
-                        throw new Error("Invalid BitStringType: " + type);
+                        throw new Error("Invalid BitStringType: ".concat(type));
                 }
             }
             if (radix === 2) {
@@ -6325,7 +6339,7 @@ exports.isPlainObject = isPlainObject;
          */
         BitString.prototype.SetBit = function (offset, val) {
             if (offset < 1) {
-                throw new Error("Unexpected offset: " + offset);
+                throw new Error("Unexpected offset: ".concat(offset));
             }
             var value = val ? "1" : "0";
             var index = this.Length - offset;
@@ -6347,7 +6361,7 @@ exports.isPlainObject = isPlainObject;
         BitString.prototype.GetBit = function (offset, defaultVal) {
             if (defaultVal === void 0) { defaultVal = false; }
             if (offset < 1) {
-                throw new Error("Unexpected offset: " + offset);
+                throw new Error("Unexpected offset: ".concat(offset));
             }
             var index = this.Length - offset;
             if (index < 0) {
@@ -6379,7 +6393,7 @@ exports.isPlainObject = isPlainObject;
                     return hex;
                 }
                 default:
-                    throw new Error("Invalid BitStringType: " + type);
+                    throw new Error("Invalid BitStringType: ".concat(type));
             }
         };
         /**
@@ -6937,7 +6951,7 @@ exports.isPlainObject = isPlainObject;
                         g = (7 * i) % 16;
                     }
                     else {
-                        throw new Error("Invalid index: " + i);
+                        throw new Error("Invalid index: ".concat(i));
                     }
                     // Be wary of the below definitions of a,b,c,d
                     F = this.addMany(F, A, K[i], M[g]);
@@ -7159,7 +7173,7 @@ exports.isPlainObject = isPlainObject;
                         k = 0xCA62C1D6;
                     }
                     if (f === undefined || k === undefined) {
-                        throw new Error("k or f is undefined, k: " + k + ", f: " + f);
+                        throw new Error("k or f is undefined, k: ".concat(k, ", f: ").concat(f));
                     }
                     var temp = ((a.LeftRotate(5)) + f + e + k + w[i]).ToUInt32();
                     e = d;
@@ -7269,7 +7283,7 @@ exports.isPlainObject = isPlainObject;
             var xorValue = new BitString("a5a5a5a5a5a5a5a5", 16);
             var xorValues = KavenSHA.SHA512_INITIAL_HASH_VALUES.map(function (p) { return p.XOR(xorValue); });
             // H(0) = SHA-512 ("SHA-512/t") using H(0)′′ as the IV, where t is the specific truncation value.
-            var name = "SHA-512/" + t;
+            var name = "SHA-512/".concat(t);
             var initialHashValues = this.compute_384_512(ToUTF8ByteArray(name), xorValues);
             var data = ToUTF8ByteArray(str);
             var result = this.compute_384_512(data, initialHashValues);
@@ -7333,7 +7347,7 @@ exports.isPlainObject = isPlainObject;
             for (var chunkIndex = 0; chunkIndex < chunksCount; chunkIndex++) {
                 var chunk = data.slice(chunkIndex * 64, (chunkIndex + 1) * 64);
                 if (chunk.length !== 64) {
-                    throw new Error("chunk length error: " + chunk.length);
+                    throw new Error("chunk length error: ".concat(chunk.length));
                 }
                 // create a 64-entry message schedule array w[0..63] of 32-bit words
                 var w = new Array(64);
@@ -7466,7 +7480,7 @@ exports.isPlainObject = isPlainObject;
             for (var chunkIndex = 0; chunkIndex < chunksCount; chunkIndex++) {
                 var chunk = data.slice(chunkIndex * 128, (chunkIndex + 1) * 128);
                 if (chunk.length !== 128) {
-                    throw new Error("chunk length error: " + chunk.length);
+                    throw new Error("chunk length error: ".concat(chunk.length));
                 }
                 // create a 80-entry message schedule array w[0..79] of 64-bit words
                 var w = new Array(80);
@@ -8177,9 +8191,9 @@ exports.isPlainObject = isPlainObject;
      * @website:     http://blog.kaven.xyz
      * @file:        [Kaven-Basic] /src/libs/KavenBasic.ts
      * @create:      2019-11-23 00:54:17.245
-     * @modify:      2021-08-07 06:04:28.805
-     * @version:     2.0.14
-     * @times:       38
+     * @modify:      2021-11-20 14:30:05.965
+     * @version:     3.0.2
+     * @times:       39
      * @lines:       1087
      * @copyright:   Copyright © 2019-2021 Kaven. All Rights Reserved.
      * @description: [description]
@@ -8341,7 +8355,7 @@ exports.isPlainObject = isPlainObject;
         if (uppercaseLetters === void 0) { uppercaseLetters = true; }
         if (specialCharacters === void 0) { specialCharacters = true; }
         if (length < 10) {
-            console.warn("Your Password is Too Damn Short: " + length);
+            console.warn("Your Password is Too Damn Short: ".concat(length));
         }
         var chars = Strings.Empty;
         if (numbers) {
@@ -8360,7 +8374,7 @@ exports.isPlainObject = isPlainObject;
             return GenerateRandomString(length, chars);
         }
         else {
-            throw new Error("Invalid parameters: " + arguments);
+            throw new Error("Invalid parameters: ".concat(arguments));
         }
     }
     /**
@@ -8447,16 +8461,6 @@ exports.isPlainObject = isPlainObject;
     /**
      *
      * @param fileName
-     * @since 1.1.7
-     * @version 2018-08-31
-     * @example "c:/a/b.xyz" => "b"
-     */
-    function GetFileNameWithoutExtension(fileName) {
-        return GetFileName(fileName).TrimEnd(GetFileExtension(fileName)).TrimEnd(".");
-    }
-    /**
-     *
-     * @param fileName
      * @version 2018-08-31
      * @since 1.0.5
      * @example
@@ -8473,6 +8477,16 @@ exports.isPlainObject = isPlainObject;
     /**
      *
      * @param fileName
+     * @since 1.1.7
+     * @version 2018-08-31
+     * @example "c:/a/b.xyz" => "b"
+     */
+    function GetFileNameWithoutExtension(fileName) {
+        return GetFileName(fileName).TrimEnd(GetFileExtension(fileName)).TrimEnd(".");
+    }
+    /**
+     *
+     * @param fileName
      * @param extension
      * @version 2018-08-31
      * @since 1.0.5
@@ -8482,7 +8496,7 @@ exports.isPlainObject = isPlainObject;
         var root = fileName.TrimEnd(ext); // fileName.substring(0, fileName.length - ext.length);
         ext = extension.TrimStart(".");
         root = root.TrimEnd(".");
-        return root + "." + ext;
+        return "".concat(root, ".").concat(ext);
     }
     /**
      *
@@ -8858,14 +8872,14 @@ exports.isPlainObject = isPlainObject;
         for (var _i = 1; _i < arguments.length; _i++) {
             args[_i - 1] = arguments[_i];
         }
+        var toString = Object.prototype.toString;
+        var isEnumerable = Object.prototype.propertyIsEnumerable;
+        var getSymbols = Object.getOwnPropertySymbols;
         function isObject(val) {
             return (typeof val === "function" ||
                 toString.call(val) === "[object Object]" ||
                 Array.isArray(val));
         }
-        var toString = Object.prototype.toString;
-        var isEnumerable = Object.prototype.propertyIsEnumerable;
-        var getSymbols = Object.getOwnPropertySymbols;
         if (!isObject(target)) {
             throw new TypeError("expected the first argument to be an object");
         }
@@ -8901,6 +8915,7 @@ exports.isPlainObject = isPlainObject;
         for (var _i = 1; _i < arguments.length; _i++) {
             args[_i - 1] = arguments[_i];
         }
+        var toString = Object.prototype.toString;
         function isObject(val) {
             return (typeof val === "function" ||
                 toString.call(val) === "[object Object]");
@@ -8910,7 +8925,6 @@ exports.isPlainObject = isPlainObject;
                 ? val === null
                 : typeof val !== "function";
         }
-        var toString = Object.prototype.toString;
         var i = 0;
         if (isPrimitive(target)) {
             target = args[i++];
@@ -9216,13 +9230,13 @@ exports.isPlainObject = isPlainObject;
         };
         APIRequestBase.prototype.Make = function (accessSecret, signatureMethod) {
             if (!this.URL || !this.URL.startsWith("http")) {
-                throw new Error("Invalid URL: " + this.URL);
+                throw new Error("Invalid URL: ".concat(this.URL));
             }
             this.AddSignatureNonce().AddTimestamp();
             var stringToSign = this.UrlWithoutSignature;
             var hash = signatureMethod(stringToSign, accessSecret);
             var query = stringToSign +
-                ("" + (stringToSign.includes("?") ? "&" : "?") + APIRequestBase.Signature + "=" + this.EncodeURIMethod(hash));
+                "".concat(stringToSign.includes("?") ? "&" : "?").concat(APIRequestBase.Signature, "=").concat(this.EncodeURIMethod(hash));
             return this.URL + query;
         };
         APIRequestBase.Verify = function (secret, url, signatureMethod, encodeURIMethod, decodeURIMethod) {
@@ -9278,7 +9292,7 @@ exports.isPlainObject = isPlainObject;
                     if (val !== undefined) {
                         valStr = "=" + this.EncodeURIMethod(val);
                     }
-                    stringToSign += "" + (stringToSign.includes("?") ? "&" : "?") + this.EncodeURIMethod(key) + valStr;
+                    stringToSign += "".concat(stringToSign.includes("?") ? "&" : "?").concat(this.EncodeURIMethod(key)).concat(valStr);
                 }
                 return stringToSign;
             },
@@ -9390,7 +9404,7 @@ exports.isPlainObject = isPlainObject;
         });
         Object.defineProperty(FilePath.prototype, "NameWithExtension", {
             get: function () {
-                return "" + this.Name + (this.Extension ? "." + this.Extension : Strings.Empty);
+                return "".concat(this.Name).concat(this.Extension ? "." + this.Extension : Strings.Empty);
             },
             set: function (val) {
                 this.Extension = GetFileExtension(val);
@@ -9859,7 +9873,7 @@ exports.isPlainObject = isPlainObject;
          * @since 1.1.5
          */
         MailConfigBase.GetEmailAddressWithName = function (name, address) {
-            return name + " <" + address + ">";
+            return "".concat(name, " <").concat(address, ">");
         };
         /**
          *
@@ -10009,10 +10023,14 @@ exports.isPlainObject = isPlainObject;
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
      * SOFTWARE.
      ********************************************************************/
-    var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from) {
-        for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
-            to[j] = from[i];
-        return to;
+    var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from, pack) {
+        if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+            if (ar || !(i in from)) {
+                if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+                ar[i] = from[i];
+            }
+        }
+        return to.concat(ar || Array.prototype.slice.call(from));
     };
     var KavenLiteEvent = /** @class */ (function () {
         function KavenLiteEvent() {
@@ -10029,7 +10047,7 @@ exports.isPlainObject = isPlainObject;
                 return false;
             }
             var count = 0;
-            for (var _i = 0, _a = __spreadArray([], this.handlers); _i < _a.length; _i++) {
+            for (var _i = 0, _a = __spreadArray([], this.handlers, true); _i < _a.length; _i++) {
                 var h = _a[_i];
                 if (h(data, sender)) {
                     count++;
@@ -10486,7 +10504,7 @@ exports.isPlainObject = isPlainObject;
                             }
                             else {
                                 if (PiData.length !== blockSizeInBytes) {
-                                    throw new Error("Invalid length: " + PiData.length + ", index: " + index);
+                                    throw new Error("Invalid length: ".concat(PiData.length, ", index: ").concat(index));
                                 }
                             }
                             Pi = Split(PiData, 8, true).map(function (bits) { return KavenUInt64.FromBytes.apply(KavenUInt64, bits); });
@@ -10902,7 +10920,7 @@ exports.isPlainObject = isPlainObject;
                     temp += "0";
                 }
                 var max = parseInt(temp, 10) - 1;
-                var cacheName = "GenerateYearMonthId_" + randomLength + "_candidates";
+                var cacheName = "GenerateYearMonthId_".concat(randomLength, "_candidates");
                 var candidates = this.GetCache(cacheName);
                 if (candidates === undefined) {
                     candidates = Array.apply(undefined, new Array(max)).map(function (_, index) {
@@ -10975,7 +10993,7 @@ exports.isPlainObject = isPlainObject;
                                     temp += "0";
                                 }
                                 max = parseInt(temp, 10) - 1;
-                                cacheName = "GenerateYearMonthId_" + randomLength + "_candidates";
+                                cacheName = "GenerateYearMonthId_".concat(randomLength, "_candidates");
                                 candidates = this.GetCache(cacheName);
                                 if (candidates === undefined) {
                                     candidates = Array.apply(undefined, new Array(max)).map(function (_, index) {
@@ -11208,7 +11226,7 @@ exports.isPlainObject = isPlainObject;
                         exported = _a.sent();
                         exportedAsString = ArrayBuffer2String(exported);
                         exportedAsBase64 = btoa(exportedAsString);
-                        pemExported = "" + header + exportedAsBase64 + footer;
+                        pemExported = "".concat(header).concat(exportedAsBase64).concat(footer);
                         return [2 /*return*/, pemExported];
                 }
             });
@@ -11226,7 +11244,7 @@ exports.isPlainObject = isPlainObject;
                         exported = _a.sent();
                         exportedAsString = ArrayBuffer2String(exported);
                         exportedAsBase64 = btoa(exportedAsString);
-                        pemExported = "" + header + exportedAsBase64 + footer;
+                        pemExported = "".concat(header).concat(exportedAsBase64).concat(footer);
                         return [2 /*return*/, pemExported];
                 }
             });
@@ -11285,11 +11303,11 @@ exports.isPlainObject = isPlainObject;
      * @website:     http://blog.kaven.xyz
      * @file:        [Kaven-Basic] /src/libs/browser/KavenBrowserRSA.ts
      * @create:      2020-07-12 22:36:25.199
-     * @modify:      2020-07-13 20:29:39.298
-     * @version:     2.0.9
-     * @times:       10
+     * @modify:      2021-11-20 10:01:41.668
+     * @version:     3.0.2
+     * @times:       11
      * @lines:       212
-     * @copyright:   Copyright © 2020 Kaven. All Rights Reserved.
+     * @copyright:   Copyright © 2020-2021 Kaven. All Rights Reserved.
      * @description: [description]
      * @license:
      * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -12785,7 +12803,7 @@ exports.isPlainObject = isPlainObject;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 
-})));
+}));
 //# sourceMappingURL=index.umd.js.map
 
 
@@ -17202,10 +17220,10 @@ var __webpack_exports__ = {};
  * @website:     http://blog.kaven.xyz
  * @file:        [github-action-current-date-time] /index.js
  * @create:      2021-11-19 15:01:56.235
- * @modify:      2021-11-19 15:06:12.688
+ * @modify:      2021-11-21 10:43:38.119
  * @version:     1.0.1
- * @times:       2
- * @lines:       45
+ * @times:       4
+ * @lines:       62
  * @copyright:   Copyright © 2021 Kaven. All Rights Reserved.
  * @description: [description]
  * @license:     [license]
@@ -17215,7 +17233,7 @@ var __webpack_exports__ = {};
 const core = __nccwpck_require__(6744);
 const github = __nccwpck_require__(6515);
 
-const { FormatDate } = __nccwpck_require__(9664);
+const { FormatDate, DateTime } = __nccwpck_require__(1733);
 
 function logJson(data) {
     console.log(JSON.stringify(data, undefined, 2));
@@ -17232,12 +17250,29 @@ try {
         console.log(`format: ${format}, timezone-offset: ${timezoneOffset}`);
     }
 
-    const time = FormatDate(undefined, format, timezoneOffset);
+    const date = Date.Create();
+
+    const time = FormatDate(date, format, timezoneOffset);
     core.setOutput("time", time);
 
+    const dt = DateTime.From(date, timezoneOffset);
+    core.setOutput("year", dt.Year);
+    core.setOutput("month", dt.Month);
+    core.setOutput("day", dt.Day);
+    core.setOutput("hours", dt.Hours);
+    core.setOutput("minutes", dt.Minutes);
+    core.setOutput("seconds", dt.Seconds);
+    core.setOutput("milliseconds", dt.Milliseconds);
+    core.setOutput("day_of_week", dt.DayOfWeek);
+    core.setOutput("week_of_year", dt.WeekOfYear);
+
+    core.setOutput("milliseconds_since_epoch", date.getTime());
+
     // Get the JSON webhook payload for the event that triggered the workflow
-    // const payload = JSON.stringify(github.context.payload, undefined, 2);
-    // console.log(`The event payload: ${payload}`);
+    if (debug) {
+        const payload = JSON.stringify(github.context.payload, undefined, 2);
+        console.log(`The event payload: ${payload}`);
+    }
 } catch (error) {
     core.setFailed(error.message);
 }
