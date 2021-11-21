@@ -26,6 +26,6 @@ jobs:
           echo "The minutes was ${{ steps.current_date_time.outputs.minutes }}"
           echo "The seconds was ${{ steps.current_date_time.outputs.seconds }}"
           echo "The milliseconds was ${{ steps.current_date_time.outputs.milliseconds }}"
-          echo "The day_of_week was ${{ steps.current_date_time.outputs.day_of_week" }}"
+          echo "The day_of_week was ${{ steps.current_date_time.outputs.day_of_week }}"
           echo "The week_of_year was ${{ steps.current_date_time.outputs.week_of_year }}"
           echo "The milliseconds_since_epoch was ${{ steps.current_date_time.outputs.milliseconds_since_epoch }}"
