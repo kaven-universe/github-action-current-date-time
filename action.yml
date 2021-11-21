@@ -1,6 +1,9 @@
 name: "Current date time"
 description: "Get current date time"
 author: Kaven[kaven@wuwenkai.com]
+branding:
+  icon: "activity"
+  color: "blue"
 inputs:
   format:
     default: ""
