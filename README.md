@@ -1,1 +1,43 @@
 # github-action-current-date-time
+
+```yml
+- name: Test1
+  id: t1
+  uses: Kaven-Universe/github-action-current-date-time@v1.1.0
+  with:
+    format: "YYYY_MM_DD HH_mm_ss_SSS"
+# Use the output from the `t1` step
+- name: Output1
+  run: |
+    echo "The time was ${{ steps.t1.outputs.time }}"
+    echo "The year was ${{ steps.t1.outputs.year }}"
+    echo "The month was ${{ steps.t1.outputs.month }}"
+    echo "The day was ${{ steps.t1.outputs.day }}"
+    echo "The hours was ${{ steps.t1.outputs.hours }}"
+    echo "The minutes was ${{ steps.t1.outputs.minutes }}"
+    echo "The seconds was ${{ steps.t1.outputs.seconds }}"
+    echo "The milliseconds was ${{ steps.t1.outputs.milliseconds }}"
+    echo "The day_of_week was ${{ steps.t1.outputs.day_of_week }}"
+    echo "The week_of_year was ${{ steps.t1.outputs.week_of_year }}"
+    echo "The milliseconds_since_epoch was ${{ steps.t1.outputs.milliseconds_since_epoch }}"
+- name: Test2
+  id: t2
+  uses: Kaven-Universe/github-action-current-date-time@v1.1.0
+  with:
+    format: "YYYY年MM月DD日 HH:mm:ss.SSS"
+    timezone-offset: -480
+# Use the output from the `t2` step
+- name: Output2
+  run: |
+    echo "The time was ${{ steps.t2.outputs.time }}"
+    echo "The year was ${{ steps.t2.outputs.year }}"
+    echo "The month was ${{ steps.t2.outputs.month }}"
+    echo "The day was ${{ steps.t2.outputs.day }}"
+    echo "The hours was ${{ steps.t2.outputs.hours }}"
+    echo "The minutes was ${{ steps.t2.outputs.minutes }}"
+    echo "The seconds was ${{ steps.t2.outputs.seconds }}"
+    echo "The milliseconds was ${{ steps.t2.outputs.milliseconds }}"
+    echo "The day_of_week was ${{ steps.t2.outputs.day_of_week }}"
+    echo "The week_of_year was ${{ steps.t2.outputs.week_of_year }}"
+    echo "The milliseconds_since_epoch was ${{ steps.t2.outputs.milliseconds_since_epoch }}"
+```
