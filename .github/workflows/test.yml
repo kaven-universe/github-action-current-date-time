@@ -17,14 +17,15 @@ jobs:
           timezone-offset: -480
       # Use the output from the `current_date_time` step
       - name: Output
-        run: echo "The time was ${{ steps.current_date_time.outputs.time }}"
-        run: echo "The year was ${{ steps.current_date_time.outputs.year }}"
-        run: echo "The month was ${{ steps.current_date_time.outputs.month }}"
-        run: echo "The day was ${{ steps.current_date_time.outputs.day }}"
-        run: echo "The hours was ${{ steps.current_date_time.outputs.hours }}"
-        run: echo "The minutes was ${{ steps.current_date_time.outputs.minutes }}"
-        run: echo "The seconds was ${{ steps.current_date_time.outputs.seconds }}"
-        run: echo "The milliseconds was ${{ steps.current_date_time.outputs.milliseconds }}"
-        run: echo "The day_of_week was ${{ steps.current_date_time.outputs.day_of_week" }}"
-        run: echo "The week_of_year was ${{ steps.current_date_time.outputs.week_of_year }}"
-        run: echo "The milliseconds_since_epoch was ${{ steps.current_date_time.outputs.milliseconds_since_epoch }}"
+        run: |
+          echo "The time was ${{ steps.current_date_time.outputs.time }}"
+          echo "The year was ${{ steps.current_date_time.outputs.year }}"
+          echo "The month was ${{ steps.current_date_time.outputs.month }}"
+          echo "The day was ${{ steps.current_date_time.outputs.day }}"
+          echo "The hours was ${{ steps.current_date_time.outputs.hours }}"
+          echo "The minutes was ${{ steps.current_date_time.outputs.minutes }}"
+          echo "The seconds was ${{ steps.current_date_time.outputs.seconds }}"
+          echo "The milliseconds was ${{ steps.current_date_time.outputs.milliseconds }}"
+          echo "The day_of_week was ${{ steps.current_date_time.outputs.day_of_week" }}"
+          echo "The week_of_year was ${{ steps.current_date_time.outputs.week_of_year }}"
+          echo "The milliseconds_since_epoch was ${{ steps.current_date_time.outputs.milliseconds_since_epoch }}"
