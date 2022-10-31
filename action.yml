@@ -35,5 +35,5 @@ outputs:
   milliseconds_since_epoch:
     description: "A number representing the milliseconds elapsed since 1 January 1970 00:00:00 UTC."
 runs:
-  using: "node12"
+  using: "node16"
   main: "dist/index.js"
