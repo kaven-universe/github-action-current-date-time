@@ -13,10 +13,6 @@ jobs:
     
       - name: Checkout
         uses: actions/checkout@v3.0.0
-
-      - name: NPM
-        run: npm install
-
       - name: Test1
         id: t1
         uses: ./.github/actions/github-action-current-date-time
