@@ -1,0 +1,39 @@
+name: "Current date time"
+description: "Get current date time"
+author: Kaven[kaven@wuwenkai.com]
+branding:
+  icon: "activity"
+  color: "blue"
+inputs:
+  format:
+    default: ""
+  timezone-offset:
+    default: 0
+  debug:
+    default: false
+outputs:
+  time:
+    description: "formatted date"
+  year:
+    description: ""
+  month:
+    description: ""
+  day:
+    description: ""
+  hours:
+    description: ""
+  minutes:
+    description: ""
+  seconds:
+    description: ""
+  milliseconds:
+    description: ""
+  day_of_week:
+    description: ""
+  week_of_year:
+    description: ""
+  milliseconds_since_epoch:
+    description: "A number representing the milliseconds elapsed since 1 January 1970 00:00:00 UTC."
+runs:
+  using: "node16"
+  main: "dist/index.js"
