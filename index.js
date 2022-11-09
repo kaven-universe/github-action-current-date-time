@@ -4,15 +4,16 @@
  * @website:     http://blog.kaven.xyz
  * @file:        [github-action-current-date-time] /index.js
  * @create:      2021-11-19 15:01:56.235
- * @modify:      2021-11-21 11:07:59.330
- * @version:     1.0.1
- * @times:       6
- * @lines:       66
- * @copyright:   Copyright © 2021 Kaven. All Rights Reserved.
+ * @modify:      2022-11-09 17:47:20.073
+ * @version:     1.2.1
+ * @times:       7
+ * @lines:       67
+ * @copyright:   Copyright © 2021-2022 Kaven. All Rights Reserved.
  * @description: [description]
  * @license:     [license]
  ********************************************************************/
 
+/* eslint-disable no-console */
 
 const core = require("@actions/core");
 const github = require("@actions/github");

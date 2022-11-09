@@ -482,7 +482,7 @@ kaven-basic
 MIT
 MIT License
 
-Copyright (c) 2018-2021 Kaven (kaven@wuwenkai.com)
+Copyright (c) 2018-2022 Kaven (kaven@wuwenkai.com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
