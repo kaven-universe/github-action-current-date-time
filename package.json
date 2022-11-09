@@ -1,6 +1,6 @@
 {
   "name": "github-action-current-date-time",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -18,9 +18,10 @@
   },
   "homepage": "https://github.com/Kaven-Universe/github-action-current-date-time#readme",
   "dependencies": {
-    "@actions/core": "^1.6.0",
-    "@actions/github": "^5.0.0",
-    "kaven-basic": "^3.0.2"
+    "@actions/core": "^1.10.0",
+    "@actions/github": "^5.1.1",
+    "kaven-basic": "^3.0.2",
+    "ncc": "^0.3.6"
   },
   "devDependencies": {
     "@vercel/ncc": "^0.32.0",
