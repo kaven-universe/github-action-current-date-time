@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "ncc build index.js --license licenses.txt",
+    "build": "ncc build index.js --license licenses.txt && terser ./dist/index.js --compress --comments false --output ./dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,12 +20,12 @@
   "dependencies": {
     "@actions/core": "^1.10.0",
     "@actions/github": "^5.1.1",
-    "kaven-basic": "^4.2.1",
-    "ncc": "^0.3.6"
+    "kaven-basic": "^4.2.1"
   },
   "devDependencies": {
     "@vercel/ncc": "^0.34.0",
     "@wenkai.wu/eslint-config": "^1.0.7",
-    "eslint": "^8.27.0"
+    "eslint": "^8.27.0",
+    "terser": "^5.15.1"
   }
 }

@@ -3,7 +3,7 @@
 ```yml
 - name: Test1
   id: t1
-  uses: Kaven-Universe/github-action-current-date-time@v1.1.0
+  uses: Kaven-Universe/github-action-current-date-time@v1
   with:
     format: "YYYY_MM_DD HH_mm_ss_SSS"
 # Use the output from the `t1` step
@@ -22,7 +22,7 @@
     echo "The milliseconds_since_epoch was ${{ steps.t1.outputs.milliseconds_since_epoch }}"
 - name: Test2
   id: t2
-  uses: Kaven-Universe/github-action-current-date-time@v1.1.0
+  uses: Kaven-Universe/github-action-current-date-time@v1
   with:
     format: "YYYY年MM月DD日 HH:mm:ss.SSS"
     timezone-offset: -480
