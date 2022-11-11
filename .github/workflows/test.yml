@@ -1,4 +1,4 @@
-name: Get date time
+name: Self test
 
 on:
   push:
@@ -9,13 +9,12 @@ jobs:
   get_date_time_job:
     runs-on: ubuntu-latest
     name: Tests
-    steps:
-    
+    steps:    
       - name: Checkout
         uses: actions/checkout@v3
       - name: Test1
         id: t1
-        uses: ./.github/actions/github-action-current-date-time
+        uses: ./
         with:
           format: "YYYY_MM_DD HH_mm_ss_SSS"
       # Use the output from the `t1` step
@@ -34,7 +33,7 @@ jobs:
           echo "The milliseconds_since_epoch was ${{ steps.t1.outputs.milliseconds_since_epoch }}"
       - name: Test2
         id: t2
-        uses: ./.github/actions/github-action-current-date-time
+        uses: ./
         with:
           format: "YYYY年MM月DD日 HH:mm:ss.SSS"
           timezone-offset: -480
