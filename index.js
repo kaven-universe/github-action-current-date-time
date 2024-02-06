@@ -4,11 +4,11 @@
  * @website:     http://blog.kaven.xyz
  * @file:        [github-action-current-date-time] /index.js
  * @create:      2021-11-19 15:01:56.235
- * @modify:      2022-11-09 17:47:20.073
- * @version:     1.2.1
- * @times:       7
+ * @modify:      2024-02-06 22:37:35.132
+ * @version:     1.4.0
+ * @times:       8
  * @lines:       67
- * @copyright:   Copyright © 2021-2022 Kaven. All Rights Reserved.
+ * @copyright:   Copyright © 2021-2024 Kaven. All Rights Reserved.
  * @description: [description]
  * @license:     [license]
  ********************************************************************/
@@ -20,9 +20,9 @@ const github = require("@actions/github");
 
 const { DateTime, TimeUnit } = require("kaven-basic");
 
-function logJson(data) {
-    console.log(JSON.stringify(data, undefined, 2));
-}
+// function logJson(data) {
+//     console.log(JSON.stringify(data, undefined, 2));
+// }
 
 try {
 
